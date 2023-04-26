@@ -2,3 +2,59 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* HEADER */
+
+header {
+    background: no-repeat url(movie-posters.jpg) center / cover;
+    background-color: #000;
+    opacity: 80%;
+    height: 20vh;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header h1, h3 {
+    text-shadow: 0 0 5px black;
+}
+
+header h1 {
+    font-size: 1.95rem;
+    font-weight: 800;
+}
+
+header h3 {
+    font-weight: 700;
+    font-size: .85rem;
+}
+
+@media (min-width: 600px) {
+    header h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    header {
+        height: 40vh;
+    }
+
+    header h1 {
+        font-size: 4rem;
+    }
+}
+
+/* MAIN */
+
+.default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DFDDDD
+}
