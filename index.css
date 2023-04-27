@@ -1,3 +1,10 @@
+:root {
+    --header-height: 20vh;
+    --main-section-height: calc(100vh - var(--header-height));
+
+    --search-bar-border-color: #D1D5DB;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -13,7 +20,7 @@ header {
     background: no-repeat url(movie-posters.jpg) center / cover;
     background-color: #000;
     opacity: 80%;
-    height: 20vh;
+    height: var(--header-height);
     color: #FFFFFF;
     display: flex;
     justify-content: space-around;
@@ -34,27 +41,112 @@ header h3 {
     font-size: .85rem;
 }
 
+/* SEARCH BAR */
+
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85vw;
+    height: 2.25rem;
+    border: 1px solid var(--search-bar-border-color);
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    font-family: inherit;
+    font-size: .875rem;
+    position: relative;
+    margin: -1.0625rem auto;
+}
+
+button {
+    height: 100%;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 1rem;
+    color: #374151;
+    background-color: #F9FAFB;
+    border-left: 1px solid var(--search-bar-border-color);
+    cursor: pointer;
+    margin-left: auto;
+}
+
+button:hover {
+    color: #F9FAFB;
+    background-color: #374151;
+}
+
+.fa-magnifying-glass {
+    color: #9CA3AF;
+    margin: 0 .5rem;
+}
+
+#search-input {
+    border: none;
+    flex: 1;
+    margin-right: 10px;
+    padding: 0.25rem 0;
+}
+
+#search-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--search-bar-border-color);
+}
+
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - var(--header-height));
+}
+
+.default {
+    margin: .15rem auto;
+    color: #DFDDDD;
+    font-size: 1.25rem;
+}
+
+#film-icon {
+    font-size: 4rem;
+}
+
+/* MEDIA QUERIES */
+
 @media (min-width: 600px) {
+    :root {
+        --header-height: 30vh;
+        --main-section: calc(100vh - var(--header-height));
+    }
+
     header h1 {
         font-size: 3rem;
+    }
+
+    button {
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 355px) {
+    button {
+        padding: 0 .25rem;
     }
 }
 
 @media (min-width: 1000px) {
-    header {
-        height: 40vh;
+    :root {
+        --header-height: 35vh;
+        --main-section: calc(100vh - var(--header-height));
     }
 
     header h1 {
         font-size: 4rem;
     }
-}
 
-/* MAIN */
-
-.default {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #DFDDDD
+    button {
+        padding: 0 3rem;
+    }
 }
