@@ -5,6 +5,10 @@
     --search-bar-border-color: #D1D5DB;
 }
 
+html {
+    height: 100%;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -67,6 +71,10 @@ form {
     margin: -1.0625rem auto;
 }
 
+form input {
+    color: #374151;
+}
+
 button {
     height: 100%;
     border: none;
@@ -104,11 +112,11 @@ button:hover {
 
 /* MAIN */
 
-main {
+.search-results, .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     height: calc(100vh - var(--header-height));
 }
 
