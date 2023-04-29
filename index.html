@@ -25,16 +25,34 @@
         </form>
         <main class="search-results">
             <div class="container" id="search-results">
-                <p class="default"><i class="fa-solid fa-film" id="film-icon"></i></p>
-                <p class="default">Start exploring</p>
+                <div class="card">
+                    <div class="movie-poster">
+                        <img id="movie-poster-img" src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg" alt="">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-info__header">
+                            <p class="movie-title">Guardians of the Galaxy Vol. 2</p>
+                            <img id="ratings-star" src="./star.png" alt="yellow star">
+                            <p class="movie-rating">7.6</p>
+                        </div>
+                        <div class="movie-info__metadata">
+                            <p class="movie-runtime">136 min</p>
+                            <p class="movie-genre">Action, Adventure, Comedy</p>
+                            <button id="watchlist-btn"><i class="fa-solid fa-circle-plus"></i> Watchlist</button>
+                        </div>
+                        <p class="movie-info__plot">The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.</p>
+                    </div>
+                </div>
+                <!-- <p class="default"><i class="fa-solid fa-film" id="film-icon"></i></p>
+                <p class="default">Start exploring</p> -->
             </div>
             <!-- 
                 Font Awesome Icons
-                <p><i class="fa-solid fa-circle-plus"></i></p> 
+                <p></p> 
                 <p><i class="fa-solid fa-circle-minus"></i></p>
             -->
         </main>  
-        <script src="app.js"></script>
+        <script src="app.js" type="module"></script>
         <script src="https://kit.fontawesome.com/7b924d2756.js" crossorigin="anonymous"></script>
     </body>
 </html>
