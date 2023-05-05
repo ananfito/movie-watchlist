@@ -4,24 +4,38 @@ const searchBtn = document.getElementById('search-btn')
 const searchInput = document.getElementById('search-input')
 const searchResultsEl = document.getElementById('search-results')
 
-searchBtn.addEventListener('click', getMovieData)
+searchBtn.addEventListener('click', getSearchResultsData)
 
 document.getElementById('search-bar').reset()
 
-let searchResultsArr = []
+let movieDataArr = []
 
-function getMovieData(e) {
+function getSearchResultsData(e) {
     e.preventDefault()
     const searchQuery = searchInput.value 
     console.log(searchQuery)
     fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`)
         .then (res => res.json())
         .then (data => {
-            console.log(data)
-            searchResultsArr = data.Search
-            console.log(searchResultsArr)
-            renderResults(searchResultsArr)
+            console.log('data from getSearchResults function:', data)
+            getMovieData(data.Search) // replaced searchResultsArr with data.Search
         })
+    renderResults(movieDataArr) // not sure where this should go; won't render properly
+        
+}
+
+// function to organize movie data and fetch specific movie titles
+// take each object in searchResultsArr and grab the 'Title' which then is used in a new fetch function
+function getMovieData(array) {
+    array.forEach(movie => {
+        fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${movie.Title}`)
+            .then (res => res.json())
+            .then (data => {
+                movieDataArr.push(data)
+            })
+    })
+    console.log('movieDataArr', movieDataArr)
+    
 }
 
 function renderResults(array) {
@@ -49,6 +63,4 @@ function renderResults(array) {
         `
         
     });
-    
-
 }
