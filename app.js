@@ -8,7 +8,7 @@ searchBtn.addEventListener('click', getSearchResultsData)
 
 document.getElementById('search-bar').reset()
 
-let movieDataArr = []
+const movieDataArr = []
 
 function getSearchResultsData(e) {
     e.preventDefault()
@@ -18,10 +18,11 @@ function getSearchResultsData(e) {
         .then (res => res.json())
         .then (data => {
             console.log('data from getSearchResults function:', data)
-            getMovieData(data.Search) // replaced searchResultsArr with data.Search
-        })
-    renderResults(movieDataArr) // not sure where this should go; won't render properly
-        
+            getMovieData(data.Search) 
+            console.log('movieDataArr in getSearchResultsData', movieDataArr) // returns array to console with data but ... movieDataArr[0] returns undefined
+            console.log(movieDataArr[0]) // returns undefined
+            renderResults(movieDataArr) 
+        })      
 }
 
 // function to organize movie data and fetch specific movie titles
@@ -34,8 +35,7 @@ function getMovieData(array) {
                 movieDataArr.push(data)
             })
     })
-    console.log('movieDataArr', movieDataArr)
-    
+    console.log('movieDataArr in getMovieData', movieDataArr)
 }
 
 function renderResults(array) {
@@ -61,6 +61,5 @@ function renderResults(array) {
                     </div>
                 </div>
         `
-        
     });
 }
