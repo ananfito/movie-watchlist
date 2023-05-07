@@ -8,41 +8,35 @@ searchBtn.addEventListener('click', getSearchResultsData)
 
 document.getElementById('search-bar').reset()
 
-const movieDataArr = []
+let movieDataArr = []
 
 function getSearchResultsData(e) {
     e.preventDefault()
     const searchQuery = searchInput.value 
-    console.log(searchQuery)
     fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`)
         .then (res => res.json())
         .then (data => {
-            console.log('data from getSearchResults function:', data)
-            getMovieData(data.Search) 
-            console.log('movieDataArr in getSearchResultsData', movieDataArr) // returns array to console with data but ... movieDataArr[0] returns undefined
-            console.log(movieDataArr[0]) // returns undefined
-            renderResults(movieDataArr) 
+            data.Search.forEach(getMovieData)
         })      
 }
 
 // function to organize movie data and fetch specific movie titles
 // take each object in searchResultsArr and grab the 'Title' which then is used in a new fetch function
-function getMovieData(array) {
-    array.forEach(movie => {
-        fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${movie.Title}`)
-            .then (res => res.json())
-            .then (data => {
-                movieDataArr.push(data)
-            })
-    })
-    console.log('movieDataArr in getMovieData', movieDataArr)
+async function getMovieData(movieObj) {
+    movieDataArr = []
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${movieObj.Title}`)
+    const data = await response.json()
+    movieDataArr.push(data)
+    renderResults(movieDataArr)
 }
 
 function renderResults(array) {
     searchResultsEl.innerHTML = ''
     array.forEach(movie => {
-        searchResultsEl.innerHTML += `
-            <div class="card">
+        if (movie.Response == "True") {
+            searchResultsEl.innerHTML += `
+            
+                <div class="card">
                     <div class="movie-poster">
                         <img id="movie-poster-img" src="${movie.Poster}" alt="">
                     </div>
@@ -60,6 +54,10 @@ function renderResults(array) {
                         <p class="movie-info__plot">${movie.Plot}</p>
                     </div>
                 </div>
+                <hr>
+            
         `
+        }
+        
     });
 }
