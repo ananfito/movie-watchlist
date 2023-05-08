@@ -9,6 +9,39 @@ searchBtn.addEventListener('click', getSearchResultsData)
 document.getElementById('search-bar').reset()
 
 let movieDataArr = []
+let movieWatchList = []
+
+document.addEventListener('click', function(e){
+    if (e.target.dataset.movieid) {
+        let imdbID = e.target.dataset.movieid
+        
+        fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`)
+            .then(res => res.json())
+            .then(data => movieWatchList.push(data))
+        console.log('button clicked')
+        console.log('movie id:',e.target.dataset.movieid)
+        console.log('movie title:',e.target.dataset.movieTitle)
+        console.log('movie watchlist:', movieWatchList)
+
+        // need to figure out how to store in local storage
+        // currently the array is not updated
+        localStorage.setItem('movieWatchList', JSON.stringify(movieWatchList))
+        console.log('local storage',JSON.parse(localStorage.getItem('movieWatchList')))
+    }
+    
+})
+
+// function add to watchlist 
+// use imdbID or movie title to grab data from API
+// store data in an array in local storage
+// function addMovieToWatchlist() {
+//     console.log('button clicked')
+//     localStorage.setItem('movieTitle', 'This is the movie title')
+//     console.log('Accessing local storage', localStorage.getItem('movieTitle'))
+//     console.log('button ID', button.id)
+//     console.log('button value', button.value)
+// }
+
 
 function getSearchResultsData(e) {
     e.preventDefault()
@@ -49,7 +82,7 @@ function renderResults(array) {
                         <div class="movie-info__metadata">
                             <p class="movie-runtime spacing">${movie.Runtime}</p>
                             <p class="movie-genre spacing">${movie.Genre}</p>
-                            <button id="watchlist-btn"><i class="fa-solid fa-circle-plus"></i> Watchlist</button>
+                            <button id="${movie.imdbID}" data-movieid="${movie.imdbID}" data-movie-title="${movie.Title}"><i class="fa-solid fa-circle-plus"></i> Watchlist</button>
                         </div>
                         <p class="movie-info__plot">${movie.Plot}</p>
                     </div>
