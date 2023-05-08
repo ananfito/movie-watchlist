@@ -9,39 +9,22 @@ searchBtn.addEventListener('click', getSearchResultsData)
 document.getElementById('search-bar').reset()
 
 let movieDataArr = []
-let movieWatchList = []
+const movieWatchList = []
 
-document.addEventListener('click', function(e){
-    if (e.target.dataset.movieid) {
-        let imdbID = e.target.dataset.movieid
-        
-        fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`)
-            .then(res => res.json())
-            .then(data => movieWatchList.push(data))
-        console.log('button clicked')
-        console.log('movie id:',e.target.dataset.movieid)
-        console.log('movie title:',e.target.dataset.movieTitle)
-        console.log('movie watchlist:', movieWatchList)
-
-        // need to figure out how to store in local storage
-        // currently the array is not updated
-        localStorage.setItem('movieWatchList', JSON.stringify(movieWatchList))
-        console.log('local storage',JSON.parse(localStorage.getItem('movieWatchList')))
-    }
-    
-})
+document.addEventListener('click', addMovieToWatchlist)
 
 // function add to watchlist 
 // use imdbID or movie title to grab data from API
 // store data in an array in local storage
-// function addMovieToWatchlist() {
-//     console.log('button clicked')
-//     localStorage.setItem('movieTitle', 'This is the movie title')
-//     console.log('Accessing local storage', localStorage.getItem('movieTitle'))
-//     console.log('button ID', button.id)
-//     console.log('button value', button.value)
-// }
-
+async function addMovieToWatchlist(e) {
+    if (e.target.dataset.movieid) {
+        let imdbID = e.target.dataset.movieid
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`)
+        const data = await response.json()
+        movieWatchList.push(data)
+        localStorage.setItem('movieWatchList', JSON.stringify(movieWatchList))
+    }
+}
 
 function getSearchResultsData(e) {
     e.preventDefault()
@@ -68,7 +51,6 @@ function renderResults(array) {
     array.forEach(movie => {
         if (movie.Response == "True") {
             searchResultsEl.innerHTML += `
-            
                 <div class="card">
                     <div class="movie-poster">
                         <img id="movie-poster-img" src="${movie.Poster}" alt="">
@@ -88,7 +70,6 @@ function renderResults(array) {
                     </div>
                 </div>
                 <hr>
-            
         `
         }
         

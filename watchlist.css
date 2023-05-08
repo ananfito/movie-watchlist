@@ -1,8 +1,34 @@
+/* HEADER */
+
 #watchlist-add-movies-link {
     color: #363636;
     text-decoration: none;
+    padding: 0.25em;
 }
+
+#watchlist-add-movies-link:hover {
+    color: #fff;
+    background-color: #363636;
+    border-radius: 3px;
+}
+
+
+/* MAIN */
 
 #watchlist-circle-plus {
     margin-right: .25rem;
+}
+
+#add-movies-text {
+    margin-top: 2em;
+}
+
+#watchlist { margin-top: 2rem; }
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 400px) {
+    .default { font-size: 1rem; }
+    #watchlist { font-size: .9rem; }
 }

@@ -12,7 +12,8 @@ html, body {
 
 body { font-family: 'Inter', sans-serif; }
 
- p { margin: 0; }
+p { margin: 0; }
+
 
 /* HEADER */
 
@@ -100,6 +101,7 @@ form input { color: #374151; }
     border-bottom: 1px solid var(--search-bar-border-color);
 }
 
+
 /* MAIN */
 
 .main {
@@ -136,6 +138,7 @@ form input { color: #374151; }
 
 #film-icon { font-size: 4rem; }
 
+
 /* MOVIE CARDS */
 
 .card {
@@ -152,7 +155,10 @@ hr {
     border-top: 1px solid #E5E7EB;
 }
 
-#movie-poster-img { max-height: 10em; }
+#movie-poster-img { 
+    max-height: 15em; 
+    max-width: 10em
+}
 
 .movie-info {
     display: flex;
@@ -194,11 +200,12 @@ button {
     font-size: inherit;
     cursor: pointer;
     margin: 0 .1em;
+    color: #111827;
 }
 
 button:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #111827;
     border-radius: 3px;
 }
 
