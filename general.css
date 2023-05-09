@@ -136,7 +136,7 @@ form input { color: #374151; }
     font-size: 1.25rem;
 }
 
-#film-icon { font-size: 4rem; }
+#film-icon, #frowny-face { font-size: 4rem; }
 
 
 /* MOVIE CARDS */

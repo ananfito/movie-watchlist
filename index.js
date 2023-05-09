@@ -13,12 +13,11 @@ const movieWatchList = []
 
 document.addEventListener('click', addMovieToWatchlist)
 
-// function add to watchlist 
-// use imdbID or movie title to grab data from API
-// store data in an array in local storage
+// function add movie to watchlist 
 async function addMovieToWatchlist(e) {
     if (e.target.dataset.movieid) {
         let imdbID = e.target.dataset.movieid
+        document.getElementById(`${imdbID}`).disabled = true
         const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`)
         const data = await response.json()
         movieWatchList.push(data)
@@ -26,18 +25,27 @@ async function addMovieToWatchlist(e) {
     }
 }
 
+// function to get data from OMDB API based on user's search query
 function getSearchResultsData(e) {
     e.preventDefault()
     const searchQuery = searchInput.value 
     fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}`)
         .then (res => res.json())
         .then (data => {
-            data.Search.forEach(getMovieData)
+            if (data.Response === "True") {
+                data.Search.forEach(getMovieData)
+            } else {
+                searchResultsEl.innerHTML = `
+                    <div class="container" >
+                        <p class="default"><i class="fa-solid fa-face-frown-open" id="frowny-face"></i></p>
+                        <p class="default">Sorry, movie not found. Try another search.</p>
+                    </div>
+                `
+            }
         })      
 }
 
-// function to organize movie data and fetch specific movie titles
-// take each object in searchResultsArr and grab the 'Title' which then is used in a new fetch function
+// function to organize movie data and fetch specific movie titles from OMDB API
 async function getMovieData(movieObj) {
     movieDataArr = []
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${movieObj.Title}`)
@@ -46,6 +54,7 @@ async function getMovieData(movieObj) {
     renderResults(movieDataArr)
 }
 
+// function to render search results
 function renderResults(array) {
     searchResultsEl.innerHTML = ''
     array.forEach(movie => {
