@@ -1,4 +1,4 @@
-import apiKey from "./.env"
+import apiKey from "./config.js"
 
 const searchBtn = document.getElementById('search-btn')
 const searchInput = document.getElementById('search-input')
