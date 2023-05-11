@@ -50,7 +50,7 @@ For this project, I went back and forth between styling the pages and getting th
 
 ## Status
 
-A live version can be viewed at: https://movie-watchlist-cde6f9.netlify.app/. 
+I am currently working deploying the project in way that does not reveal the API key, however I have encountered some errors in the process. Please check back for updates.  
 
 ## Connect
 
