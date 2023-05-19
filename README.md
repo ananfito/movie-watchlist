@@ -40,6 +40,8 @@ For this project, I went back and forth between styling the pages and getting th
 
 ## Screenshots
 
+![An animated GIF demonstrating the movie watchlist in action. The user navigates to the homepage which contains a header image of movie posters displayed in grid with the text “Find your film” and “My Watchlist”. Below the header is a search bar where the user inputs the text “star wars” and the results appear below the search bar. The results are displayed in a list with the movie poster on the left and information about the movie to the left. The user then clicks the “+ watchlist” button to add the film “Star Wars IV: A New Hope” to their watchlist. The user clicks the “My Watchlist” link in the upper right corner to navigate to the watchlist page where the added film is displayed. The user then clicks the “- remove” button to remove the film from the watch list. After removal, the following text is displayed, “Your watchlist is looking a little empty…” with a button underneath that says, “+ Let’s add some movies!”](movie-watchlist.gif)
+
 ![Webpage for searching for movies and adding to a watchlist. From the top: header with movie posters, search bar, and the text "start exploring"](screenshot-index.png)
 
 ![Webpage displaying movie search results, including movie posters, title, rating, runtime, genre, plot, and button to 'add to watchlist'.](screenshot-index-with-search-results.png)
