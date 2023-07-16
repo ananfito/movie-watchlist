@@ -58,7 +58,7 @@ I am currently working deploying the project in way that does not reveal the API
 
 Thank you for reading about this project. If you'd like to connect with me for mentoring, collaboration, or employment opportunities, you can do so via the following links:
 
-- [Email](https://anthonynanfito.com/contact/)
+- <a href="mailto:msg.for.anthony.p6ht3@simplelogin.com?subject=Nice GitHub Project&body=Hey Anthony, I saw your GitHub project. Let's talk!">Email</a>
 - [LinkedIn](https://linkedin.com/in/anthonynanfito)
 - [Portfolio](https://ananfito.github.io)
 - [Blog](https://ananfito.hashnode.dev)
